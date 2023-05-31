@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+        <title>encriptador ONE</title>
+        
+    </head>
+    <body>
+        <header>
+            <img class="logo" src="imagenes/Logo.png">
+        </header>
+        <main>
+            
+            <input class="textoin" id="txtin" value="Ingrese el texto aqui"></input>
+                
+            <section class="restric">
+                <p>● Solo letras minusculas y sin acentos<p>
+            </section>
+            <section class="botones_izq">
+                <button class="btnencrip" id="encbutton">Encriptar</button>
+                <button class="btndesencrip" id="desbutton">Desencriptar</button>
+            </section>
+            
+        </main>
+        <aside>
+            <img src="imagenes/Muñeco.png" id="imgaside">
+
+            <section class="mensaje"> 
+                <p class="t1" id="tt1">Ningun mensaje fue encontrado</p>
+                <textarea class="t2" id="tt2">Ingrese el texto que deseas encriptar o desencriptar</textarea>
+            </section>
+        
+            <button class="btncop" id="copbutton">Copiar</button>
+        </aside>
+        <footer>
+
+        </footer>
+        <script>
+            var textin= document.querySelector("#txtin");
+            var encbtn= document.querySelector("#encbutton");
+            var desbtn= document.querySelector("#desbutton");
+            var copbtn= document.querySelector("#copbutton");
+          
+            function encriptar(){
+                var entrada=textin.value.toLowerCase();
+                var salida=entrada.replace(/e/igm,"enter")
+                var salida=salida.replace(/o/igm,"ober")
+                var salida=salida.replace(/i/igm,"imes")
+                var salida=salida.replace(/a/igm,"ai")
+                var salida=salida.replace(/u/igm,"ufat")
+                document.getElementById("imgaside").style.display="none";
+                document.getElementById("tt1").style.display="none";
+                document.getElementById("tt2").innerHTML=salida;
+                document.getElementById("copbutton").style.display="flex";
+            }
+
+            function desencriptar(){
+                var entrada=textin.value.toLowerCase();
+                var salida=entrada.replace(/enter/igm,"e")
+                var salida=salida.replace(/ober/igm,"o")
+                var salida=salida.replace(/imes/igm,"i")
+                var salida=salida.replace(/ai/igm,"a")
+                var salida=salida.replace(/ufat/igm,"u")
+                document.getElementById("tt2").innerHTML=salida;
+            }
+
+            function copiar(){
+                var contenido=document.querySelector("#tt2");
+                contenido.select();
+                document.execCommand("copy");
+                alert("Copiado!!!");
+            }
+            encbtn.onclick=encriptar;  
+            desbtn.onclick=desencriptar;  
+            copbtn.onclick=copiar;    
+        </script>
+    </body>
+    
+</html>
